@@ -1,0 +1,1 @@
+### tensorflow 学习基本知识### data* [数据操作指南](https://segmentfault.com/a/1190000008793389)### api_learn* 一些单独的api方法的学习### initution* 入门学习### model_save* 模型保存相关学习### nn* 用tf构建的卷积神经网络的学习### study_tflearn* tflearn 学习
