@@ -1,4 +1,23 @@
-## tensorflow 编程模型
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# tensorflow 编程模型
 
 ### 核心概念
 
@@ -58,3 +77,11 @@ session 的Run方法执行计算图。用户给出需要计算的节点，同时
 ### TensorFlow 实现卷积网络
 
 * [Github_04_cnn](https://github.com/jiye-ML/CNN)
+
+
+
+## 杂谈
+
+* tensorflow优化的是训练参数变化，然后最小化损失函数，也就是损失函数对优化的参数求导，然后按照梯度下降方向走
+* TensorFlow会将变量加入到训练变量中，Variable个就是一个标识，然后placehold标识为填充变量，
+
