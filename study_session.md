@@ -158,5 +158,68 @@ coord.join(enqueue_threads)
 ### 4. Exporting and Serving Models with TensorFlow
 
 * 使用numpy方式
+```
+import numpy as np
+weights = sess.run(W)
+np.savez(os.path.join(path, 'weight_storage'), weights)
 
-![](03.intro_tensorflow/tensorflow_save_load_01.png)
+loaded_w = np.load(path + 'weight_storage.npz')
+loaded_w = loaded_w.items()[0][1]
+
+sess.run(W.assign(loaded_w))
+```
+* 使用内置的 save类
+```
+saver = tf.train.Saver(max_to_keep=7, keep_checkpoint_every_n_hours=0.5)
+
+DIR = "path/to/model"
+with tf.Session() as sess:
+    for step in range(1,NUM_STEPS+1):
+        if step % 50 == 0:
+            saver.save(sess, os.path.join(DIR, "model"), global_step=step)  # 保存模型
+            
+            
+    saver.restore(sess, os.path.join(DIR,"model_ckpt-1000"))  # 加载模型
+```
+* 注意
+
+![](03.intro_tensorflow/tensorflow_save_load_02.png)
+* 到目前为止， 所有方法为了加载参数都需要重建图. Saver也提供不重建的方式通过生成 .meta 文件保存了所有的需要的信息。
+
+![](03.intro_tensorflow/tensorflow_save_load_03.png)
+![](03.intro_tensorflow/tensorflow_save_load_04.png)
+* 保存变量
+```
+saver = tf.train.Saver(max_to_keep=7, keep_checkpoint_every_n_hours=1)
+saver.export_meta_graph(os.path.join(DIR,"model_ckpt.meta"), collection_list=['train_var'])
+```
+* 加载变量
+```
+with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
+    saver = tf.train.import_meta_graph(os.path.join(DIR,"model_ckpt.meta")
+    saver.restore(sess, os.path.join(DIR,"model_ckpt-1000"))
+    
+    x = tf.get_collection('train_var')[0]
+    y_true = tf.get_collection('train_var')[1]
+    accuracy = tf.get_collection('train_var')[2]
+```
+
+#### 4.1 SERIALIZATION AND PROTOCOL BUFFERS
+
+* 当我们的程序需要保存在内存中时，我们需要首先定义表示的形式，并且有效转换为这种形式，序列化使用一个函数将数据转化为字符串，
+这个字符串之后可以反序列化到数据。
+* 尽管在简单的数据结构实例中，这可能是微不足道的，但是在具有嵌套数组，字典和对象的复杂数据结构中，采取的方法并不那么简单。
+*  JSON and XML 很好，自带分隔符。
+* Protocol buffers是使用的转换数据的方式.可以使用在非压缩文本格式作为调试、编辑或者二进制格式。
+
+### 4.2 Introduction to TensorFlow Serving
+
+![](03.intro_tensorflow/tensorflow_export_01.png)
+
+#### 4.3 正则化
+
+* total_loss = cross_entropy + LAMBDA * tf.nn.l2_loss(W)
+* 正则函数
+
+![](03.intro_tensorflow/tensorflow_regularization_01.png)
