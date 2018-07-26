@@ -47,15 +47,15 @@ Out:
 
 * 步骤  
 
-![](03.intro_tensorflow/tensorflow_debug_01.png)
+![](readme/tensorflow_debug_01.png)
 * 有关shape的问题  
 
-![](03.intro_tensorflow/tensorflow_debug_02.png)
+![](readme/tensorflow_debug_02.png)
 * datatype error  
 
 * 总结  
 
-![](03.intro_tensorflow/tensorflow_debug_03.png)
+![](readme/tensorflow_debug_03.png)
 * [code](study_api/study_debug.py)
 
 
@@ -87,8 +87,8 @@ for d in range(len(data_splits)):
     writer.close()
 ```
 
-![](03.intro_tensorflow/tensorflow_tfrecord_01.png)
-![](03.intro_tensorflow/tensorflow_tfrecord_02.png)
+![](readme/tensorflow_tfrecord_01.png)
+![](readme/tensorflow_tfrecord_02.png)
 
 
 #### 3.2 Queues
@@ -132,7 +132,7 @@ for t in threads:
 
 #### 3.4 tf.train.Coordinator
 
-![](03.intro_tensorflow/tensorflow_thread_01.png)
+![](readme/tensorflow_thread_01.png)
 
 #### 3.5 tf.train.QueueRunner and tf.RandomShuffleQueue
  
@@ -183,11 +183,11 @@ with tf.Session() as sess:
 ```
 * 注意
 
-![](03.intro_tensorflow/tensorflow_save_load_02.png)
+![](readme/tensorflow_save_load_02.png)
 * 到目前为止， 所有方法为了加载参数都需要重建图. Saver也提供不重建的方式通过生成 .meta 文件保存了所有的需要的信息。
 
-![](03.intro_tensorflow/tensorflow_save_load_03.png)
-![](03.intro_tensorflow/tensorflow_save_load_04.png)
+![](readme/tensorflow_save_load_03.png)
+![](readme/tensorflow_save_load_04.png)
 * 保存变量
 ```
 saver = tf.train.Saver(max_to_keep=7, keep_checkpoint_every_n_hours=1)
@@ -215,11 +215,11 @@ with tf.Session() as sess:
 
 ### 4.2 Introduction to TensorFlow Serving
 
-![](03.intro_tensorflow/tensorflow_export_01.png)
+![](readme/tensorflow_export_01.png)
 
 #### 4.3 正则化
 
 * total_loss = cross_entropy + LAMBDA * tf.nn.l2_loss(W)
 * 正则函数
 
-![](03.intro_tensorflow/tensorflow_regularization_01.png)
+![](readme/tensorflow_regularization_01.png)

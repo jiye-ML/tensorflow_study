@@ -47,17 +47,17 @@ from tensorflow.contrib import learn
 ```
 * 函数
 
-![](03.intro_tensorflow/tensorflow_contrib_01.png)
+![](readme/tensorflow_contrib_01.png)
 * 调用四步
 
-![](03.intro_tensorflow/tensorflow_contrib_02.png)
+![](readme/tensorflow_contrib_02.png)
 
 
 ### Pretrained models with TF-Slim
 
 * 函数
 
-![](03.intro_tensorflow/tensorflow_slim_01.png)
+![](readme/tensorflow_slim_01.png)
 * 导入
 ```
 from tensorflow.contrib import slim
@@ -67,11 +67,11 @@ from tensorflow.contrib import slim
 
 * 下载模型
 
-![](03.intro_tensorflow/tensorflow_slim_02.png)
+![](readme/tensorflow_slim_02.png)
 * 准备数据
 
-![](03.intro_tensorflow/tensorflow_slim_03.png)
+![](readme/tensorflow_slim_03.png)
 
 * 使用你的模型
-![](03.intro_tensorflow/tensorflow_slim_04.png)
+![](readme/tensorflow_slim_04.png)
 
